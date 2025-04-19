@@ -21,10 +21,30 @@ while True:
         #cv2.rectangle(frame, (x, y), (x1, y1), (0, 255, 0), 2)
         
         landmarks = predictor(gray, face)
+
+        left_eye_ratio = get_blinking_ratio([36, 37, 38, 39, 40, 41], landmarks)
+        right_eye_ratio = get_blinking_ratio([42, 43, 44, 45, 46, 47], landmarks)
+        blinking_ratio = (left_eye_ratio + right_eye_ratio) / 2
         #x = landmarks.part(36).x
         #y = landmarks.part(36).y
         #vc2.circle(frame, (x, y), 3, (0, 0, 255), 2)
         
+        if blinking_ratio > 5.7:
+            cv2.putText(frame, "BLINKING", (50, 150), cv2.FONT_HERSHEY_SIMPLEX, 7, (255, 0, 0))
+        left_eye_region = np.array([(landmarks.part(36).x, landmarks.part(36).y),
+                                   (landmarks.part(37).x, landmarks.part(37).y),
+                                   (landmarks.part(38).x, landmarks.part(37).y),
+                                   (landmarks.part(38).x, landmarks.part(39).y), 
+                                   (landmarks.part(40).x, landmarks.part(41).y),   
+                                   (landmarks.part(41).x, landmarks.part(41).y)], np.int32)
+        cv2.polylines(frame, [left_eye_region], True, (0, 0, 255), 2)
+    
+    cv2.imshow("Frame", frame)
+    key = cv2.waitKey(1)
+    if key == 27:
+
+
+
 
         #Olho direito 
         left_point_ry = (landmarks.part(36).x, landmarks.part(36).y)
@@ -33,7 +53,7 @@ while True:
         center_top = midpont(landmarks.part(37), landmarks.part(38))
         center_bottom = midpont(landmarks.part(39), landmarks.part(40))
         
-        hor_line = cv2.line(frame, left_point, right_point(0, 255, 0), 2)
+        hor_line = cv2.line(frame, left_point_ry, right_point_ry, (0, 255, 0), 2)
         ver_line = cv2.line(frame, center_top, center_bottom, (0, 255, 0), 2)
 
 
