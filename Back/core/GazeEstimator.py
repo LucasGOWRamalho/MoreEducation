@@ -1,5 +1,4 @@
-
-from domain.gaze_point import GazePoint
+from ..domain.GazePoint import GazePoint
 
 class GazeEstimator:
     def __init__(self, head_pose_estimator):
