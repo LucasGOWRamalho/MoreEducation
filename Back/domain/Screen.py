@@ -1,4 +1,4 @@
-from config import settings
+from ..config import settings
 
 class Screen:
     def __init__(self, width, height):
