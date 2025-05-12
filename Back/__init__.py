@@ -1,6 +1,4 @@
-__version__ = "1.0.0"
+from .config import Settings
+from .core import CalibrationService
 
-# Importações devem ser relativas
-__all__ = [
-    '__version__'
-]
+__all__ = ['Settings', 'CalibrationService']
