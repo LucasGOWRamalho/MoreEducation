@@ -1,23 +1,25 @@
 import os
-from pydantic import BaseSettings
+from pydantic import BaseSettings, conint
+from typing import Literal
 from pathlib import Path
 
 class Settings(BaseSettings):
+    # Configurações básicas
     APP_NAME: str = "GazeAccess"
-    ENV: str = os.getenv("ENV", "development")
+    ENV: str = os.getenv("ENV", "development")  # Opcional: pode usar apenas ENV: str = "development"
     
-    # Eye Tracking
-    EYE_TRACKING_MODEL: str = "mediapipe"  # ou "tobii", "pygaze"
-    CALIBRATION_POINTS: int = 9
+    # Rastreamento ocular
+    EYE_TRACKING_MODEL: Literal["mediapipe", "tobii", "pygaze"] = "mediapipe"
+    CALIBRATION_POINTS: conint(ge=5, le=15) = 9
     
     # TTS
-    TTS_ENGINE: str = "pyttsx3"  # ou "google", "azure"
-    DEFAULT_VOICE: str = "brazil"
+    TTS_ENGINE: Literal["pyttsx3", "google", "azure"] = "pyttsx3"
     
-    # Database
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./gazeapp.db")
-    
+    # Segurança
+    SECRET_KEY: str  # Obrigatório (irá falhar se não estiver no .env)
+    DATABASE_URL: str = "sqlite:///./dados.db"  # Valor padrão
+
     class Config:
         env_file = ".env"
-
-settings = Settings()
+        env_file_encoding = 'utf-8'
+        case_sensitive = False
