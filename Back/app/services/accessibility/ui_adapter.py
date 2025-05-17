@@ -1,5 +1,5 @@
 from typing import Dict, Any
-from core.exceptions import InvalidInputError
+from app.core.exceptions import InvalidInputError
 
 class UIAdapter:
     def __init__(self, accessibility_settings: Dict[str, Any]):

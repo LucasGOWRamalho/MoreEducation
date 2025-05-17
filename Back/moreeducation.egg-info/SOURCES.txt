@@ -1,0 +1,6 @@
+setup.py
+moreeducation.egg-info/PKG-INFO
+moreeducation.egg-info/SOURCES.txt
+moreeducation.egg-info/dependency_links.txt
+moreeducation.egg-info/requires.txt
+moreeducation.egg-info/top_level.txt

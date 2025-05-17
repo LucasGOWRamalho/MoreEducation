@@ -2,8 +2,8 @@ import json
 import os
 from typing import Dict, Any
 from pathlib import Path
-from core.config import settings
-from core.exceptions import ProfileNotFoundError
+from app.core.config import settings
+from app.core.exceptions import ProfileNotFoundError
 
 class AccessibilityManager:
     def __init__(self):

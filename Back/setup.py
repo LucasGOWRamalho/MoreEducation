@@ -9,7 +9,9 @@ setup(
         "uvicorn>=0.15.0",
         "pydantic>=1.8.0",
         "python-dotenv>=0.19.0",
-        "scikit-learn"
+        "scikit-learn",
+        "pyttsx3",
+        "pytesseract"
     ],
     python_requires=">=3.8",
 )

@@ -1,7 +1,7 @@
 import pyttsx3
 from typing import Optional
-from core.config import settings
-from core.exceptions import TTSError
+from app.core.config import settings
+from app.core.exceptions import TTSError  # Certifique-se que TTSError existe em exceptions.py
 import os
 
 class TTSEngine:

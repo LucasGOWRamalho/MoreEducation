@@ -9,3 +9,14 @@ class TTSException(GazeBaseException):
     
 class AccessibilityProfileNotFound(GazeBaseException):
     """When user profile is not found"""
+
+class TTSError(Exception):
+    """Erro relacionado ao mecanismo de TTS."""
+    pass
+
+class InvalidInputError(Exception):
+    """Erro para entradas inválidas em acessibilidade/UI."""
+    pass
+
+class ProfileNotFoundError(GazeBaseException):
+    """When user profile is not found"""
