@@ -1,7 +1,7 @@
 import numpy as np
 from sklearn.linear_model import LinearRegression
-from core.config import settings
-from core.exceptions import CalibrationError
+from app.core.config import settings
+from app.core.exceptions import CalibrationError
 
 class EyeCalibrator:
     def __init__(self):
@@ -45,3 +45,5 @@ class EyeCalibrator:
             return (float(prediction[0]), float(prediction[1]))
         except Exception as e:
             raise CalibrationError(f"Prediction failed: {str(e)}")
+        
+__all__ = ['EyeCalibrator']

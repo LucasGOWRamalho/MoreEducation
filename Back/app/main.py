@@ -1,7 +1,4 @@
-import sys
-from pathlib import Path
 from fastapi import FastAPI, WebSocket, HTTPException
-sys.path.append(str(Path(__file__).parent.parent))
 from fastapi.middleware.cors import CORSMiddleware
 import cv2
 import numpy as np
@@ -9,14 +6,10 @@ import base64
 import json
 from typing import Optional
 
-# Adjust the sys.path to include the correct parent directory for 'core'
-sys.path.append(str(Path(__file__).resolve().parent.parent))  # Adjusted path for 'core'
+from app.core.config import settings
 
-from .core.config import settings 
-
-# Importações relativas corrigidas
-from services.eye_tracking import EyeDetector, EyeCalibrator
-from services.tts import TTSEngine
+from app.services.eye_tracking import EyeDetector, EyeCalibrator
+from app.services.tts import TTSEngine
 
 # Inicializa o app FastAPI
 app = FastAPI(

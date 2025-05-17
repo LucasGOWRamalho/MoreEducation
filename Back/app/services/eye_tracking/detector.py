@@ -2,7 +2,7 @@ import cv2
 import mediapipe as mp
 import numpy as np
 from typing import Tuple, Optional
-from core.exceptions import CalibrationError
+from app.core.exceptions import CalibrationError
 
 class EyeDetector:
     def __init__(self):
@@ -46,3 +46,6 @@ class EyeDetector:
         """Extrai as coordenadas médias de um olho"""
         points = [(landmarks[i].x, landmarks[i].y) for i in indices]
         return (np.mean([p[0] for p in points]), np.mean([p[1] for p in points]))
+
+
+__all__ = ['EyeDetector']
